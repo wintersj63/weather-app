@@ -11,11 +11,9 @@ const forecast =  (latitude, longitude, callback) => {
         }else if(response.body.error){
             callback('Error code: ' + response.body.error.code +  ', ' + response.body.error.info, undefined)
         }else {
-            callback(undefined, {
-                temperature: response.body.current.temperature,
-                realfeel: response.body.current.feelslike,
-                description: response.body.current.weather_descriptions[0]
-            })
+            callback(undefined, 
+                response.body.current.weather_descriptions[0] + '. It is currently ' + response.body.current.temperature + '. It feels like ' + response.body.current.feelslike + ' degrees out.', 
+            )
         }
     })
 
